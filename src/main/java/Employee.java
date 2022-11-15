@@ -1,3 +1,7 @@
+import org.apache.commons.lang3.StringUtils;
+
+import javax.management.BadAttributeValueExpException;
+
 public class Employee {
     private String lastName;
     private String firstName;
@@ -9,14 +13,38 @@ public class Employee {
     private static int counter = 1;
 
 
-    public Employee(String lastName, String firstName, String surName, int department, double salary) {
-        this.lastName = lastName;
-        this.firstName = firstName;
-        this.surName = surName;
+    public Employee(String lastName, String firstName, String surName, int department, double salary) throws BadAttributeValueExpException {
+        setLastName(lastName);
+        setFirstName(firstName);
+        setSurName(surName);
         this.department = department;
         this.salary = salary;
         id = counter++;
 
+    }
+
+    public void setLastName(String lastName) throws BadAttributeValueExpException {
+        if (!StringUtils.isAlpha(lastName)) {
+            throw new BadAttributeValueExpException("400 Bad Request");
+        } else {
+            this.lastName = StringUtils.capitalize(lastName);
+        }
+    }
+
+    public void setFirstName(String firstName) throws BadAttributeValueExpException {
+        if (!StringUtils.isAlpha(firstName)) {
+            throw new BadAttributeValueExpException("400 Bad Request");
+        } else {
+            this.firstName = StringUtils.capitalize(firstName);
+        }
+    }
+
+    public void setSurName(String surName) throws BadAttributeValueExpException {
+        if (!StringUtils.isAlpha(surName)) {
+            throw new BadAttributeValueExpException("400 Bad Request");
+        } else {
+            this.surName = StringUtils.capitalize(surName);
+        }
     }
 
     public String getLastName() {
