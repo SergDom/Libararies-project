@@ -1,3 +1,5 @@
+import javax.management.BadAttributeValueExpException;
+
 public class Main {
 
     public static void listOfEmployee(Employee[] arr) {
@@ -149,12 +151,12 @@ public class Main {
         }
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws BadAttributeValueExpException {
 
         Employee[] employees = new Employee[10];
 
-        Employee employee1 = new Employee("Ivanov", "Ivan", "Ivanovich", 1, 150000);
-        Employee employee2 = new Employee("Dmitriev", "Sergey", "Aleksandrovich", 2, 160000);
+        Employee employee1 = new Employee("ivanov", "ivan", "ivanovich", 1, 150000);
+        Employee employee2 = new Employee("dmitriev", "Sergey", "aleksandrovich", 2, 160000);
         Employee employee3 = new Employee("Seleznev", "Aleksander", "Alekseevich", 3, 145000);
         Employee employee4 = new Employee("Petrov", "Ilia", "Sergeevich", 4, 180000);
         Employee employee5 = new Employee("Vasechkin", "Anton", "Genadeivich", 5, 170000);
